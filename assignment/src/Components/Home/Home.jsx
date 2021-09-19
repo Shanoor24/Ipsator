@@ -3,7 +3,7 @@ import styles from "./Home.module.css";
 import Apps from "@material-ui/icons/Apps"
 import List from "@material-ui/icons/FormatAlignJustify"
 import { useDispatch, useSelector } from "react-redux";
-import { getData, filterData, getPerticularData } from "../../Redux/CarData/actions";
+import { getData, filterData, getPerticularDataSuccess } from "../../Redux/CarData/actions";
 import {Button} from "@material-ui/core"
 import { useHistory } from "react-router";
 
@@ -44,9 +44,9 @@ function Home() {
     }
 
     const handleSubmit = (date, time) => {
-        const pertculerData = data.filterData((item) => item.crash_date === date && item.crash_time === time)
+        const pertculerData = data?.filter((item) => item.crash_date === date && item.crash_time === time)
 
-        dispatch(getPerticularData(pertculerData[0]));
+        dispatch(getPerticularDataSuccess(pertculerData));
 
         history.push(`Vehicle/${date}/${time}`)
     }
@@ -136,7 +136,7 @@ function Home() {
                             </div>
                         </div>
                         <div style={{marginTop: "5px"}}>
-                            <button style={{backgroundColor: "#FF6D38", border: "none", color: "white", padding: "5px 5px 5px 5px", boxSizing: "border-box", borderRadius: "0.2em"}}>See Details</button>
+                            <button onClick={() => handleSubmit(item.crash_date, item.crash_time)} style={{backgroundColor: "#FF6D38", border: "none", color: "white", padding: "5px 5px 5px 5px", boxSizing: "border-box", borderRadius: "0.2em"}}>See Details</button>
                         </div>
                     </div> )}
                 </div>

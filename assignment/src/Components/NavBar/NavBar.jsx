@@ -1,14 +1,20 @@
 import React from "react";
 import styles from "./NavBar.module.css";
 import {Button} from "@material-ui/core"
+import { useHistory } from "react-router";
 
 function NavBar() {
+    const history = useHistory();
+
+    const handleHome = () => {
+        history.push("/")
+    }
     return (
         <div id={styles.nav_main_cont}>
             <div className={styles.logo}>
                 <img src="https://i.imgur.com/fsKSR4z.png" alt="logo" style={{width: "190px", position: "absolute", marginTop: "-30px"}} />
             </div>
-            <div className={styles.home}>
+            <div className={styles.home} onClick={handleHome}>
                 Home
             </div>
             <div>

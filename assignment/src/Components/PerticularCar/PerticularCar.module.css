@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+
+.header {
+    background-color: #2276E3;
+    color: white;
+    font-family: 'Arimo', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 10px 0px 10px 0px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-bottom: 5px;
+    margin-top: 50px;
+    width: 700px;
+}
+
+.details_cont {
+    width: 700px;
+    margin: auto;
+    background-color: #FFFFFF;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+}
+
+.flex_box {
+    display: flex;
+}
+
+.flex_box > div {
+    /* text-align: left; */
+    border: 2px solid #F0F3F7;
+    color: #000000;
+    font-family: 'Arimo', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.flex_box > div:nth-child(1) {
+    width: 30%;
+}
+
+.flex_box > div:nth-child(2) {
+    width: 70%;
+}

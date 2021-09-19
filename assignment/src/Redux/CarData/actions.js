@@ -78,8 +78,6 @@ const filterData = (page, date) => (dispatch) => {
     })
 }
 
-const getPerticularData = (data) => {
-    getPerticularDataSuccess(data)
-}
 
-export {getDataRequest, getDataSuccess, getDataFailure, getData, filterData, getPerticularData}
+
+export {getDataRequest, getDataSuccess, getDataFailure, getData, filterData, getPerticularDataSuccess}
