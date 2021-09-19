@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Yantramanav:wght@100;300;400;500;700;900&display=swap');
+
+
+#home_main_cont {
+    width: 980px;
+    border: 1px solid red;
+    margin: auto;
+    margin-top: 70px;
+}
+
+.filter_main_cont {
+    width: 100%;
+    background-color: #FFFFFF;
+    padding: 10px 30px 10px 30px;
+    box-sizing: border-box;
+    display: flex;
+    font-family: 'Quicksand', sans-serif;
+    margin-bottom: 30px;
+}
+
+.filter_cont {
+    border: 0px solid red;
+    width: 50%;
+    text-align: left;
+    border-right: 2px solid #F0F3F7;
+}
+
+.input {
+    padding: 10px 10px 10px 10px;
+    font-size: 16px;
+    margin-left: 0px;
+    margin-right: 60px;
+    border: 2px solid #F0F3F7;
+}
+
+.filter_button {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #FF6D38;
+    color: #FFFFFF;
+    padding: 10px 25px 10px 25px;
+    box-sizing: border-box;
+    font-size: 17px;
+    font-weight: 700;
+    border: none;
+    border-radius: 0.5em;
+}
+
+.view_cont {
+    border: 0px solid red;
+    width: 50%;
+    display: flex;
+    gap: 10px;
+}
+
+.view_cont > div:nth-child(1) {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 10px;
+    margin-left: 245px;
+    margin-right: 20px;
+}

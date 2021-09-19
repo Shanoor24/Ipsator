@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./NavBar.module.css";
-import {Botton, Button} from "@material-ui/core"
+import {Button} from "@material-ui/core"
 
 function NavBar() {
     return (
