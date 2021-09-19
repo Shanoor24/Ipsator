@@ -115,20 +115,22 @@
     font-weight: 700;
     padding: 10px 0px 10px 0px;
     box-sizing: border-box;
+    margin-bottom: 5px;
 }
 
 .list_cont {
     display: grid;
-    border: 1px solid green;
+    border: 0px solid green;
     width: 980px;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 320px 320px 320px;
     gap: 10px;
 }
 
 .list_cont > div {
     background-color: #FFFFFF;
-    padding: 5px 10px 5px 10px;
+    padding: 10px 10px 10px 10px;
     box-sizing: border-box;
+    border-radius: 0.5em;
 }
 
 .flex_box {
@@ -136,8 +138,12 @@
 }
 
 .flex_box > div {
-    text-align: left;
+    /* text-align: left; */
     border: 2px solid #F0F3F7;
+    color: #000000;
+    font-family: 'Arimo', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .flex_box > div:nth-child(1) {

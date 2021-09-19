@@ -3,8 +3,9 @@ import styles from "./Home.module.css";
 import Apps from "@material-ui/icons/Apps"
 import List from "@material-ui/icons/FormatAlignJustify"
 import { useDispatch, useSelector } from "react-redux";
-import { getData, filterData } from "../../Redux/CarData/actions";
+import { getData, filterData, getPerticularData } from "../../Redux/CarData/actions";
 import {Button} from "@material-ui/core"
+import { useHistory } from "react-router";
 
 
 function Home() {
@@ -13,6 +14,7 @@ function Home() {
     const [date, setDate] = useState("");
     const {data} = useSelector((state) => state.cardata);
     const dispatch = useDispatch();
+    const history = useHistory();
 
 
     const handleDate = (e) => {
@@ -39,6 +41,14 @@ function Home() {
 
     const handleList = () => {
         setList(true);
+    }
+
+    const handleSubmit = (date, time) => {
+        const pertculerData = data.filterData((item) => item.crash_date === date && item.crash_time === time)
+
+        dispatch(getPerticularData(pertculerData[0]));
+
+        history.push(`Vehicle/${date}/${time}`)
     }
 
     useEffect(() => {
@@ -78,14 +88,14 @@ function Home() {
                         <div style={{width: "230px"}}>{item.vehicle_type_code1}</div>
                         <div style={{width: "230px", padding: "5px 0px 5px 0px", paddingTop: item.vehicle_type_code1.length > 26 ? "10px" : "5px"}}>{item.vehicle_type_code2 ? item.vehicle_type_code2 : "Street Object"}</div>
                         <div style={{width: "150px", padding: "5px 0px 5px 0px", paddingTop: item.vehicle_type_code1.length > 26 ? "8px" : "5px"}}>
-                            <button style={{backgroundColor: "#FF6D38", border: "none", color: "white", padding: "5px 5px 5px 5px", boxSizing: "border-box", borderRadius: "0.2em"}}>See details</button>
+                            <button onClick={() => handleSubmit(item.crash_date, item.crash_time)} style={{backgroundColor: "#FF6D38", border: "none", color: "white", padding: "5px 5px 5px 5px", boxSizing: "border-box", borderRadius: "0.2em"}}>See details</button>
                         </div>
                     </div> )
                 }
                 <div style={{display: "flex", justifyContent: "right", paddingRight: "40px"}}>
                     <Button disabled={offset===0} variant="contained" onClick={handlePagePrev} style={{fontFamily: `"M PLUS Rounded 1c", "sans-serif"`, fontWeight:"500", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px', marginLeft:"40px", marginRight:"7px"}}>◄</Button>
                     <div className={styles.page}>{offset + 1}</div>
-                    <Button disabled={data.length < 10} onClick={handlePageNext} variant="contained" style={{fontFamily: `"M PLUS Rounded 1c", "sans-serif"`, fontWeight:"500", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}>►</Button>
+                    <Button disabled={data.length < 9} onClick={handlePageNext} variant="contained" style={{fontFamily: `"M PLUS Rounded 1c", "sans-serif"`, fontWeight:"500", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}>►</Button>
                 </div>
             </> : <>
                 <div className={styles.header}>
@@ -101,7 +111,39 @@ function Home() {
                                 {item.crash_date.trim().split("T")[0]}
                             </div>
                         </div>
+                        <div className={styles.flex_box}>
+                            <div>
+                                Time
+                            </div>
+                            <div>
+                                {item.crash_time}
+                            </div>
+                        </div>
+                        <div className={styles.flex_box}>
+                            <div>
+                                Vehicle model
+                            </div>
+                            <div>
+                                {item.vehicle_type_code1}
+                            </div>
+                        </div>
+                        <div className={styles.flex_box}>
+                            <div>
+                                Crashed with
+                            </div>
+                            <div style={{paddingTop: "10px"}}>
+                            {item.vehicle_type_code2 ? item.vehicle_type_code2 : "Street Object"}
+                            </div>
+                        </div>
+                        <div style={{marginTop: "5px"}}>
+                            <button style={{backgroundColor: "#FF6D38", border: "none", color: "white", padding: "5px 5px 5px 5px", boxSizing: "border-box", borderRadius: "0.2em"}}>See Details</button>
+                        </div>
                     </div> )}
+                </div>
+                <div style={{display: "flex", justifyContent: "right", paddingRight: "40px"}}>
+                    <Button disabled={offset===0} variant="contained" onClick={handlePagePrev} style={{fontFamily: `"M PLUS Rounded 1c", "sans-serif"`, fontWeight:"500", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px', marginLeft:"40px", marginRight:"7px"}}>◄</Button>
+                    <div className={styles.page}>{offset + 1}</div>
+                    <Button disabled={data.length < 9} onClick={handlePageNext} variant="contained" style={{fontFamily: `"M PLUS Rounded 1c", "sans-serif"`, fontWeight:"500", maxWidth: '30px', maxHeight: '30px', minWidth: '30px', minHeight: '30px'}}>►</Button>
                 </div>
             </>}
         </div>

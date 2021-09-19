@@ -1,4 +1,4 @@
-import {GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE} from "./actionTypes.js";
+import {GET_DATA_REQUEST, GET_DATA_SUCCESS, GET_DATA_FAILURE, GET_PERTICULAR_DATA} from "./actionTypes.js";
 import Axios from "axios"
 
 const axios = Axios.create({
@@ -25,6 +25,13 @@ const getDataFailure = (error) => {
     }
 }
 
+const getPerticularDataSuccess = (payload) => {
+    return {
+        type : GET_PERTICULAR_DATA,
+        payload
+    }
+}
+
 const getData = (page) => (dispatch) => {
     dispatch(getDataRequest())
 
@@ -33,7 +40,7 @@ const getData = (page) => (dispatch) => {
         method : "get",
         params : {
             $offset : page,
-            $limit: 10,
+            $limit: 9,
         }
     }
 
@@ -56,7 +63,7 @@ const filterData = (page, date) => (dispatch) => {
         method : "get",
         params : {
             $offset : page,
-            $limit: 10,
+            $limit: 9,
         }
     }
 
@@ -71,4 +78,8 @@ const filterData = (page, date) => (dispatch) => {
     })
 }
 
-export {getDataRequest, getDataSuccess, getDataFailure, getData, filterData}
+const getPerticularData = (data) => {
+    getPerticularDataSuccess(data)
+}
+
+export {getDataRequest, getDataSuccess, getDataFailure, getData, filterData, getPerticularData}
