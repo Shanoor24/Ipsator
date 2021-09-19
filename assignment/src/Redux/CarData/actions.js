@@ -25,7 +25,7 @@ const getDataFailure = (error) => {
     }
 }
 
-const getData = (page, limit,) => (dispatch) => {
+const getData = (page) => (dispatch) => {
     dispatch(getDataRequest())
 
     const config = {
@@ -33,7 +33,7 @@ const getData = (page, limit,) => (dispatch) => {
         method : "get",
         params : {
             $offset : page,
-            $limit: limit,
+            $limit: 10,
         }
     }
 
@@ -48,4 +48,27 @@ const getData = (page, limit,) => (dispatch) => {
     })
 }
 
-export {getDataRequest, getDataSuccess, getDataFailure, getData}
+const filterData = (page, date) => (dispatch) => {
+    dispatch(getDataRequest())
+
+    const config = {
+        url:`/resource/h9gi-nx95.json?crash_date=${date}T00:00:00.000`,
+        method : "get",
+        params : {
+            $offset : page,
+            $limit: 10,
+        }
+    }
+
+    return axios(config)
+    .then((res) => {
+        dispatch(getDataSuccess(res.data))
+        console.log(res.data);
+    })
+    .catch((err) => {
+        dispatch(getDataFailure(err));
+        console.log(err);
+    })
+}
+
+export {getDataRequest, getDataSuccess, getDataFailure, getData, filterData}
